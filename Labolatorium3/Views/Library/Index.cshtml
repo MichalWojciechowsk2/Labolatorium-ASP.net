@@ -1,0 +1,65 @@
+﻿@model Dictionary<int, Book>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<h1>List of books</h1>
+<a class="btn btn-primary" asp-controller="Book" asp-action="AddBook">Add book</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Title
+            </th>
+            <th>
+                Author
+            </th>
+            <th>
+                Number of pages
+            </th>
+            <th>
+                ISBN
+            </th>
+            <th>
+                Publication date
+            </th>
+            <th>
+                Publishing house
+            </th>
+            <th>
+                Akcje
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in @Model)
+        {
+            <tr>
+                <td>
+                    @item.Value.title
+                </td>
+                <td>
+                    @item.Value.author
+                </td>
+                <td>
+                    @item.Value.numberOfPages
+                </td>
+                <td>
+                    @item.Value.ISBN
+                </td>
+                <td>
+                    @item.Value.publicationDate
+                </td>
+                <td>
+                    @item.Value.publishingHouse
+                </td>
+                <td>
+                    <a class="btn btn-outline-primary" asp-controller="Book" asp-action="Update" asp-route-id="@item.Key">Edite</a>
+                    <a class="btn btn-outline-info" asp-controller="Book" asp-action="Details" asp-route-id="@item.Key">Detail</a>
+                    <a class="btn btn-outline-danger" asp-controller="Book" asp-action="Delete" asp-route-id="@item.Key">Delate</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

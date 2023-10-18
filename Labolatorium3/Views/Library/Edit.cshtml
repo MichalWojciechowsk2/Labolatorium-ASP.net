@@ -1,0 +1,44 @@
+﻿@model Book
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<h1>Edite shelf</h1>
+<form asp-controller="Book" asp-action="Update" method="post">
+    <input asp-for="Id" />
+    <div class="mb-3">
+        <label asp-for="title">Title</label>
+        <input class="form-control" asp-for="title" />
+        <span class="text-danger" asp-validation-for="title"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="author">Author</label>
+        <input class="form-control" asp-for="author" />
+        <span class="text-danger" asp-validation-for="author"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="numberOfPages">Number of pages</label>
+        <input class="form-control" asp-for="numberOfPages" />
+        <span class="text-danger" asp-validation-for="numberOfPages"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="ISBN">ISBN</label>
+        <input class="form-control" asp-for="ISBN" />
+        <span class="text-danger" asp-validation-for="ISBN"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="publicationDate">Publication Date</label>
+        <input class="form-control" asp-for="publicationDate" />
+        <span class="text-danger" asp-validation-for="publicationDate"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="publishingHouse">Publishing House</label>
+        <input class="form-control" asp-for="publishingHouse" />
+        <span class="text-danger" asp-validation-for="publishingHouse"></span>
+    </div>
+    <div class="mb-3">
+        <button type="submit" class="btn btn-primary"> Save </button>
+    </div>
+</form>
