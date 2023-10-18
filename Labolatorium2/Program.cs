@@ -35,11 +35,6 @@ namespace Labolatorium2
                 pattern: "birth/{action=Index}/{id?}",
                 defaults: new { controller = "Birth" });
 
-            app.MapControllerRoute(
-                name: "Calculator",
-                pattern: "Calculator/{action=Form}/{id?}",
-                defaults: new { controller = "calculator" });
-
             app.Run();
         }
     }
