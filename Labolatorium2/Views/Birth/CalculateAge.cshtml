@@ -1,0 +1,10 @@
+﻿@model Birth
+
+<h2>Wynik obliczeń</h2>
+
+@if (!string.IsNullOrEmpty(ViewBag.Message))
+{
+    <p>@ViewBag.Message</p>
+}
+
+<a asp-action="Index">Powrót do formularza</a>

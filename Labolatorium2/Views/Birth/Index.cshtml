@@ -1,0 +1,20 @@
+﻿@model Birth
+
+<h2>Podaj imię i datę urodzenia</h2>
+
+<form asp-action="CalculateAge" method="post">
+    <div class="form-group">
+        <label for="Name">Imię:</label>
+        <input asp-for="Name" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="BirthDate">Data urodzenia:</label>
+        <input asp-for="BirthDate" type="date" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Oblicz wiek</button>
+</form>
+
+@if (!string.IsNullOrEmpty(ViewBag.Message))
+{
+    <p>@ViewBag.Message</p>
+}

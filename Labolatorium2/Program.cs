@@ -30,6 +30,16 @@ namespace Labolatorium2
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
 
+            app.MapControllerRoute(
+                name: "birth",
+                pattern: "birth/{action=Index}/{id?}",
+                defaults: new { controller = "Birth" });
+
+            app.MapControllerRoute(
+                name: "Calculator",
+                pattern: "Calculator/{action=Form}/{id?}",
+                defaults: new { controller = "calculator" });
+
             app.Run();
         }
     }
