@@ -5,21 +5,21 @@
 @{
 }
 
-<h1>Do you really want to delate data?</h1>
-<p>Title</p>
-<h3>@Model.title</h3>
-<p>Author</p>
-<h3>@Model.author</h3>
-<p>Number Of Pages</p>
-<h3>@Model.numberOfPages</h3>
-<p>ISBN</p>
+<h1>Do you really want to delete data?</h1>
+<p>Title:</p>
+<h3>@Model.Title</h3>
+<p>Author:</p>
+<h3>@Model.Author</h3>
+<p>Number Of Pages:</p>
+<h3>@Model.NumberOfPages</h3>
+<p>ISBN:</p>
 <h3>@Model.ISBN</h3>
-<p>Publication Date</p>
-<h3>@Model.publicationDate</h3>
-<p>Publishing House</p>
-<h3>@Model.publishingHouse</h3>
+<p>Publication Date:</p>
+<h3>@Model.PublicationDate</h3>
+<p>Publishing House:</p>
+<h3>@Model.PublishingHouse</h3>
 <form asp-action="Delete">
     <input asp-for="Id" />
     <button class="btn btn-danger" type="submit">Yes</button>
-    <a class="btn btn-close" type="submit" asp-action="Index">No</a>
+    <a  class="btn btn-outline-dark"  type="submit" asp-action="Index">No</a>
 </form>

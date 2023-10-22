@@ -1,21 +1,21 @@
 ﻿@model Book
 
 <h1>Add book to the shelf</h1>
-<form asp-controller="Book" asp-action="AddBook" method="post">
+<form asp-controller="Library" asp-action="AddBook" method="post">
     <div class="mb-3">
-        <label asp-for="title">Title</label>
-        <input class="form-control" asp-for="title" />
-        <span class="text-danger" asp-validation-for="title"></span>
+        <label asp-for="Title">Title</label>
+        <input class="form-control" asp-for="Title" />
+        <span class="text-danger" asp-validation-for="Title"></span>
     </div>
     <div class="mb-3">
-        <label asp-for="author">Author</label>
-        <input class="form-control" asp-for="author" />
-        <span class="text-danger" asp-validation-for="author"></span>
+        <label asp-for="Author">Author</label>
+        <input class="form-control" asp-for="Author" />
+        <span class="text-danger" asp-validation-for="Author"></span>
     </div>
     <div class="mb-3">
-        <label asp-for="numberOfPages">Number Of Pages</label>
-        <input class="form-control" asp-for="numberOfPages" />
-        <span class="text-danger" asp-validation-for="numberOfPages"></span>
+        <label asp-for="NumberOfPages">Number Of Pages</label>
+        <input class="form-control" asp-for="NumberOfPages" />
+        <span class="text-danger" asp-validation-for="NumberOfPages"></span>
     </div>
     <div class="mb-3">
         <label asp-for="ISBN">ISBN</label>
@@ -23,14 +23,18 @@
         <span class="text-danger" asp-validation-for="ISBN"></span>
     </div>
     <div class="mb-3">
-        <label asp-for="publicationDate">Publication Date</label>
-        <input class="form-control" asp-for="publicationDate" />
-        <span class="text-danger" asp-validation-for="publicationDate"></span>
+        <label asp-for="PublicationDate">Publication Date</label>
+        <input class="form-control" asp-for="PublicationDate" />
+        <span class="text-danger" asp-validation-for="PublicationDate"></span>
     </div>
     <div class="mb-3">
-        <label asp-for="publishingHouse">Publishing House</label>
-        <input class="form-control" asp-for="publishingHouse" />
-        <span class="text-danger" asp-validation-for="publishingHouse"></span>
+        <label asp-for="PublishingHouse">Publishing House</label>
+        <input class="form-control" asp-for="PublishingHouse" />
+        <span class="text-danger" asp-validation-for="PublishingHouse"></span>
     </div>
+    <div class="mb3">
+        <button type="submit" class="btn btn-primary"> Add </button>
+    </div>
+
 
 </form>

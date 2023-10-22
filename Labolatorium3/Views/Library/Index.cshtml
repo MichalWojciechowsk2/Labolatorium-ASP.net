@@ -5,7 +5,7 @@
 @{
 }
 <h1>List of books</h1>
-<a class="btn btn-primary" asp-controller="Book" asp-action="AddBook">Add book</a>
+<a class="btn btn-primary" asp-controller="Library" asp-action="AddBook">Add book</a>
 <table class="table">
     <thead>
         <tr>
@@ -18,7 +18,7 @@
             <th>
                 Number of pages
             </th>
-            <th>
+            @* <th>
                 ISBN
             </th>
             <th>
@@ -26,9 +26,9 @@
             </th>
             <th>
                 Publishing house
-            </th>
+            </th> *@
             <th>
-                Akcje
+                Actions
             </th>
         </tr>
     </thead>
@@ -37,27 +37,27 @@
         {
             <tr>
                 <td>
-                    @item.Value.title
+                    @item.Value.Title
                 </td>
                 <td>
-                    @item.Value.author
+                    @item.Value.Author
                 </td>
                 <td>
-                    @item.Value.numberOfPages
+                    @item.Value.NumberOfPages
                 </td>
-                <td>
+                @* <td>
                     @item.Value.ISBN
                 </td>
                 <td>
-                    @item.Value.publicationDate
+                    @item.Value.PublicationDate
                 </td>
                 <td>
-                    @item.Value.publishingHouse
-                </td>
+                    @item.Value.PublishingHouse
+                </td> *@
                 <td>
-                    <a class="btn btn-outline-primary" asp-controller="Book" asp-action="Update" asp-route-id="@item.Key">Edite</a>
-                    <a class="btn btn-outline-info" asp-controller="Book" asp-action="Details" asp-route-id="@item.Key">Detail</a>
-                    <a class="btn btn-outline-danger" asp-controller="Book" asp-action="Delete" asp-route-id="@item.Key">Delate</a>
+                    <a class="btn btn-outline-primary" asp-controller="Library" asp-action="Edit" asp-route-id="@item.Key">Edit</a>
+                    <a class="btn btn-outline-info" asp-controller="Library" asp-action="Details" asp-route-id="@item.Key">Details</a>
+                    <a class="btn btn-outline-danger" asp-controller="Library" asp-action="Delete" asp-route-id="@item.Key">Delete</a>
                 </td>
             </tr>
         }

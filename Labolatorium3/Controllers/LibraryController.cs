@@ -14,13 +14,13 @@ namespace Labolatorium3.Controllers
         }        
 
         [HttpGet]
-        public IActionResult Create()
+        public IActionResult AddBook()
         {
             return View();
         }
 
         [HttpPost]
-        public IActionResult Create(Book model) 
+        public IActionResult AddBook(Book model) 
         {
             if (ModelState.IsValid)
             {
@@ -28,12 +28,49 @@ namespace Labolatorium3.Controllers
                 _book[model.Id] = model;
                 return RedirectToAction("Index");
             }
-            return View();
+                return View();
+
+            //return View();
+
         }
 
-        public IActionResult Update(int id )
+        [HttpGet]
+        public IActionResult Edit(int id )
         {
             return View(_book[id]);
+        }
+        [HttpPost]
+        public IActionResult Edit(Book model)
+        {
+            if (ModelState.IsValid)
+            {
+                _book[model.Id] = model;
+                return RedirectToAction("Index");
+            }
+            return View();
+
+        }
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            return View(_book[id]);
+        }
+        [HttpPost]
+        public IActionResult Delete(Book model)
+        {
+                _book.Remove(model.Id);
+                return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public IActionResult Details(int id)
+        {
+            return View(_book[id]);
+        }
+        [HttpPost]
+        public IActionResult Details(Book model)
+        {
+            return RedirectToAction("Index");
         }
     }
 }
