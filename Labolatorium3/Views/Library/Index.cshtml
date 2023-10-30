@@ -1,4 +1,4 @@
-﻿@model Dictionary<int, Book>
+﻿@model List<Book>
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
@@ -6,27 +6,23 @@
 }
 <h1>List of books</h1>
 <a class="btn btn-primary" asp-controller="Library" asp-action="AddBook">Add book</a>
-<table class="table">
+@if(Model.Count>0)
+{
+   <table class="table">
     <thead>
         <tr>
             <th>
-                Title
+                @Html.DisplayNameFor(model => model[0].Title)
             </th>
             <th>
-                Author
+                @Html.DisplayNameFor(model => model[0].Author)
             </th>
             <th>
-                Number of pages
-            </th>
-            @* <th>
-                ISBN
+                @Html.DisplayNameFor(model => model[0].Priority)
             </th>
             <th>
-                Publication date
+                @Html.DisplayNameFor(model => model[0].NumberOfPages)
             </th>
-            <th>
-                Publishing house
-            </th> *@
             <th>
                 Actions
             </th>
@@ -37,29 +33,27 @@
         {
             <tr>
                 <td>
-                    @item.Value.Title
+                    @item.Title
                 </td>
                 <td>
-                    @item.Value.Author
+                    @item.Author
                 </td>
                 <td>
-                    @item.Value.NumberOfPages
-                </td>
-                @* <td>
-                    @item.Value.ISBN
+                    @item.Priority.GetDisplayName()
                 </td>
                 <td>
-                    @item.Value.PublicationDate
+                    @item.NumberOfPages
                 </td>
                 <td>
-                    @item.Value.PublishingHouse
-                </td> *@
-                <td>
-                    <a class="btn btn-outline-primary" asp-controller="Library" asp-action="Edit" asp-route-id="@item.Key">Edit</a>
-                    <a class="btn btn-outline-info" asp-controller="Library" asp-action="Details" asp-route-id="@item.Key">Details</a>
-                    <a class="btn btn-outline-danger" asp-controller="Library" asp-action="Delete" asp-route-id="@item.Key">Delete</a>
+                    <a class="btn btn-outline-primary" asp-controller="Library" asp-action="Edit">Edit</a>
+                    <a class="btn btn-outline-info" asp-controller="Library" asp-action="Details" >Details</a>
+                    <a class="btn btn-outline-danger" asp-controller="Library" asp-action="Delete" >Delete</a>
                 </td>
             </tr>
         }
     </tbody>
-</table>
+</table> 
+}
+
+
+

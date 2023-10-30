@@ -1,3 +1,5 @@
+using Labolatorium3.Models;
+
 namespace Labolatorium3
 {
     public class Program
@@ -9,6 +11,7 @@ namespace Labolatorium3
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
+            builder.Services.AddSingleton<IBookService, MemoryBookService>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

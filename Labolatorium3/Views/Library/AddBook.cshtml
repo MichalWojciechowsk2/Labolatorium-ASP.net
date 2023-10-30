@@ -12,6 +12,13 @@
         <input class="form-control" asp-for="Author" />
         <span class="text-danger" asp-validation-for="Author"></span>
     </div>
+    <div>
+        <label asp-for="Priority"></label>
+        <div>
+            <span asp-validation-for="Priority" class="text-danger"></span>
+        </div>
+        <select class="form-control" asp-for="Priority" asp-items="@Html.GetEnumSelectList<Priority>()"></select>
+    </div>
     <div class="mb-3">
         <label asp-for="NumberOfPages">Number Of Pages</label>
         <input class="form-control" asp-for="NumberOfPages" />

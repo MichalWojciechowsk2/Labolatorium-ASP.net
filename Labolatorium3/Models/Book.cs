@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Runtime.InteropServices;
 
@@ -8,15 +9,16 @@ namespace Labolatorium3.Models
     {
         [HiddenInput]
         public int Id { get; set; }
+        [Display(Name = "Priority")]
+        public Priority Priority { get; set; }
 
-        //[Required(ErrorMessage = "Enter the book title")]
+        [Required(ErrorMessage = "enter the book title")]
         public string Title { get; set; }
-        //[StringLength(maximumLength: 100, ErrorMessage = "To much characters")]
+        [StringLength(maximumLength: 100, ErrorMessage = "To much characters")]
         public string Author { get; set; }
-        //[MaxLength(10000)]
         public int NumberOfPages { get; set; }
-        //[MaxLength(13)]
         public int ISBN { get; set; }
+        [DataType(DataType.Date)]
         public DateTime PublicationDate { get; set; }
         public string PublishingHouse { get; set; }
 
