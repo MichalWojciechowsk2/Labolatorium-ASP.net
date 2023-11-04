@@ -42,7 +42,7 @@ namespace Labolatorium3.Controllers
         public IActionResult Edit(int id)
         {
             var book = _bookService.FindById(id);
-            if(book == null)
+            if (book == null)
             {
                 return NotFound();
             }
@@ -54,27 +54,46 @@ namespace Labolatorium3.Controllers
             if (ModelState.IsValid)
             {
                 _bookService.Edit(model);
-                return RedirectToAction("Index");
+                return RedirectToAction(nameof(Index));
+
             }
             return View(model);
 
         }
+
+        //[HttpDelete]
+        //public IActionResult Delete(int id)
+        //{
+        //    var bookToDelete = _bookService.FindById(id);
+
+        //    if (bookToDelete != null)
+        //    {
+        //        _bookService.Delete(id);
+        //        return RedirectToAction("Index");
+        //    }
+        //    else
+        //    {
+        //        return NotFound();
+        //    }
+        //}
+
         [HttpGet]
         public IActionResult Delete(int id)
         {
             var book = _bookService.FindById(id);
-            if(book == null)
+            if (book == null)
             {
                 return NotFound();
             }
             return View(book);
         }
         [HttpPost]
-        public IActionResult ComfirmDelete(int id)
+        public IActionResult Delete(Book model)
         {
-            _bookService.Delete(id);
+            _bookService.Delete(model.Id);
             return RedirectToAction("Index");
         }
+
 
 
         [HttpGet]

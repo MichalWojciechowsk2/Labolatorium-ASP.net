@@ -3,6 +3,7 @@
     public class MemoryBookService : IBookService
     {
         private Dictionary<int, Book> _items = new Dictionary<int, Book>();
+
         public int Add(Book item)
         {
             int id = _items.Keys.Count != 0 ? _items.Keys.Max() : 0;
@@ -30,10 +31,5 @@
         {
             return _items[id];
         }
-
-        //public void Update(Book item)
-        //{
-        //    _items[item.Id] = item;
-        //}
     }
 }
