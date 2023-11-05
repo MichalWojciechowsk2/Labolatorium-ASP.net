@@ -12,6 +12,9 @@ namespace Labolatorium3
             builder.Services.AddControllersWithViews();
 
             builder.Services.AddSingleton<IBookService, MemoryBookService>();
+
+            builder.Services.AddSingleton<IDateTimeProvider, CurrentDateTimeProvider>();
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
