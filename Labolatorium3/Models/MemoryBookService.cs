@@ -1,4 +1,6 @@
-﻿namespace Labolatorium3.Models
+﻿using ModelsLibrary;
+
+namespace Labolatorium3.Models
 {
     public class MemoryBookService : IBookService
     {

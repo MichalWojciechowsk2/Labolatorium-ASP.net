@@ -1,15 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System.ComponentModel;
+﻿
 using System.ComponentModel.DataAnnotations;
-using System.Runtime.InteropServices;
 
-namespace Labolatorium3.Models
+namespace ModelsLibrary
 {
     public class Book
     {
-        [HiddenInput]
+        //[HiddenInput]
         public int Id { get; set; }
-        [Display(Name = "Priority")]
+        //[Display(Name = "Priority")]
         public Priority Priority { get; set; }
 
         [Required(ErrorMessage = "enter the book title")]
@@ -27,8 +25,8 @@ namespace Labolatorium3.Models
         public DateTime PublicationDate { get; set; }
         [Display(Name = "PublishingHouse")]
         public string PublishingHouse { get; set; }
-        [HiddenInput]
-        public DateTime Created {  get; set; }  
+        //[HiddenInput]
+        public DateTime Created { get; set; }
 
     }
 }
