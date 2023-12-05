@@ -5,7 +5,7 @@ namespace Labolatorium3.Models
 {
     public class BookMapper
     {
-        public static Book FromEntity(Entities entity)
+        public static Book FromEntity(LibraryEntities entity)
         {
             return new Book()
             {
@@ -20,9 +20,9 @@ namespace Labolatorium3.Models
             };
         }
 
-        public static Entities ToEntity(Book model)
+        public static LibraryEntities ToEntity(Book model)
         {
-            return new Entities()
+            return new LibraryEntities()
             {
                 Id = model.Id,
                 Title = model.Title,

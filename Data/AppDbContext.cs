@@ -6,7 +6,7 @@ namespace Data
 {
     public class AppDbContext : DbContext
     {
-        public DbSet<Entities> Books { get; set; }
+        public DbSet<LibraryEntities> Books { get; set; }
         private string DbPath { get; set; }
         public AppDbContext()
         {
@@ -19,8 +19,8 @@ namespace Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Entities>().HasData(
-                new Entities() { Id = 1, Title = "Test book", Author = "Michal Wojciechowski", NumberOfPages = 100, ISBN = 123, PublicationDate = new DateTime(2023, 11, 12), PublishingHouse = "Wsei" }
+            modelBuilder.Entity<LibraryEntities>().HasData(
+                new LibraryEntities() { Id = 1, Title = "Test book", Author = "Michal Wojciechowski", NumberOfPages = 100, ISBN = 123, PublicationDate = new DateTime(2023, 11, 12), PublishingHouse = "Wsei" }
             );
         }
     }

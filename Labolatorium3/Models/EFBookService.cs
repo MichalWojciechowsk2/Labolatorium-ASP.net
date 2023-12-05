@@ -4,10 +4,10 @@ using ModelsLibrary;
 
 namespace Labolatorium3.Models
 {
-    public class BookService : IBookService
+    public class EFBookService : IBookService
     {
         private AppDbContext _context;
-        public BookService(AppDbContext context)
+        public EFBookService(AppDbContext context)
         {
             _context = context;
         }
@@ -20,16 +20,18 @@ namespace Labolatorium3.Models
 
         public void Delete(int id)
         {
-            Entities? find = _context.Books.Find(id);
+            LibraryEntities? find = _context.Books.Find(id);
             if (find != null)
             {
                 _context.Books.Remove(find);
+                _context.SaveChanges();
             }
         }
 
         public void Edit(Book book)
         {
-            throw new NotImplementedException();
+            _context.Books.Update(BookMapper.ToEntity(book));
+            _context.SaveChanges();
         }
 
         public List<Book> FindAll()

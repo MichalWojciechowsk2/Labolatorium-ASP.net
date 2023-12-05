@@ -22,7 +22,7 @@
 <p>Publishing House:</p>
 <h3>@Model.PublishingHouse</h3>
 <form asp-action="Delete">
-    <input asp-for="Id" />
+    <hidden input asp-for="Id" />
     <button class="btn btn-danger" type="submit">Yes</button>
     <a  class="btn btn-outline-dark"  type="submit" asp-action="Index">No</a>
 </form>

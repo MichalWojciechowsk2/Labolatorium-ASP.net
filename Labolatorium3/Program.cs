@@ -1,4 +1,5 @@
 using Labolatorium3.Models;
+using System.Xml.Linq;
 
 namespace Labolatorium3
 {
@@ -14,6 +15,10 @@ namespace Labolatorium3
             builder.Services.AddSingleton<IBookService, MemoryBookService>();
 
             builder.Services.AddSingleton<IDateTimeProvider, CurrentDateTimeProvider>();
+
+            builder.Services.AddDbContext<Data.AppDbContext>();
+
+            builder.Services.AddTransient<IBookService, EFBookService>();
 
             var app = builder.Build();
 
