@@ -1,4 +1,5 @@
-﻿using ModelsLibrary;
+﻿using Data.Entities;
+using ModelsLibrary;
 
 namespace Labolatorium3.Models
 {
@@ -9,5 +10,6 @@ namespace Labolatorium3.Models
         void Edit(Book book);
         List<Book> FindAll();
         Book? FindById(int id);
+        List<OrganizationEntity> FindAllOrganizationsForVieModel();
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Data;
+using Data.Entities;
 using Microsoft.EntityFrameworkCore;
 using ModelsLibrary;
 
@@ -38,6 +39,12 @@ namespace Labolatorium3.Models
         {
             return _context.Books.Select(e => BookMapper.FromEntity(e)).ToList();
         }
+
+        public List<OrganizationEntity> FindAllOrganizationsForVieModel()
+        {
+            return _context.Organizations.ToList();
+        }
+
 
         public Book? FindById(int id)
         {

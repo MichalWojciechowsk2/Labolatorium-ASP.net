@@ -1,5 +1,6 @@
 ﻿using Labolatorium3.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using ModelsLibrary;
 using System.Diagnostics;
 using System.Reflection;
@@ -21,14 +22,20 @@ namespace Labolatorium3.Controllers
         [HttpGet]
         public IActionResult AddBook()
         {
-            return View();
+            Book model = new Book();
+            _bookService.FindAllOrganizationsForVieModel().Select(o => new SelectListItem() { Value = o.Id.ToString(), Text = o.Title })
+        .ToList();
+            return View(model);
         }
 
-        [HttpPost]
+            [HttpPost]
         public IActionResult AddBook(Book model)
         {
             if (ModelState.IsValid)
             {
+                _bookService.FindAllOrganizationsForVieModel().Select(o => new SelectListItem() { Value = o.Id.ToString(), Text = o.Title })
+            .ToList();
+
                 _bookService.Add(model);
                 return RedirectToAction("Index");
             }

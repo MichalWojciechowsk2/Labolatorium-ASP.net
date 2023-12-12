@@ -1,10 +1,13 @@
-﻿using ModelsLibrary;
+﻿using Data.Entities;
+using Microsoft.EntityFrameworkCore;
+using ModelsLibrary;
 
 namespace Labolatorium3.Models
 {
     public class MemoryBookService : IBookService
     {
         private Dictionary<int, Book> _items = new Dictionary<int, Book>();
+        
         private readonly IDateTimeProvider _timeProvider;
 
         public MemoryBookService(IDateTimeProvider timeProvider)
@@ -41,6 +44,14 @@ namespace Labolatorium3.Models
             return _items[id];
         }
 
-
+        public List<OrganizationEntity> FindAllOrganizationsForVieModel()
+        {
+            return _items.Values
+        .Select(book => new OrganizationEntity
+        {
+            Id = book.OrganizationId ?? 0,
+        })
+        .ToList();
+        }
     }
 }

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Data.Entities
 {
     [Table("books")]
@@ -14,7 +15,6 @@ namespace Data.Entities
     {
         public int Id { get; set; }
         public Priority Priority { get; set; }
-
         [Required]
         public string Title { get; set; }
         public string Author { get; set; }
@@ -23,5 +23,8 @@ namespace Data.Entities
         [DataType(DataType.Date)]
         public DateTime PublicationDate { get; set; }
         public string PublishingHouse { get; set; }
+
+        public int OrganizationId {  get; set; }
+        public OrganizationEntity? Organization { get; set; }
     }
 }

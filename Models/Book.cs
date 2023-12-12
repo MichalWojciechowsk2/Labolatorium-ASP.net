@@ -1,4 +1,6 @@
-﻿
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.ComponentModel.DataAnnotations;
 
 namespace ModelsLibrary
@@ -28,5 +30,10 @@ namespace ModelsLibrary
         //[HiddenInput]
         public DateTime Created { get; set; }
 
+        [HiddenInput]
+        public int? OrganizationId { get; set; }
+
+        [ValidateNever]
+        public IEnumerable<SelectListItem> Organizations { get; set; }
     }
 }
