@@ -23,8 +23,10 @@ namespace Labolatorium3.Controllers
         public IActionResult AddBook()
         {
             Book model = new Book();
-            _bookService.FindAllOrganizationsForVieModel().Select(o => new SelectListItem() { Value = o.Id.ToString(), Text = o.Title })
-        .ToList();
+            model.Organizations = _bookService
+                .FindAllOrganizationsForVieModel()
+                .Select(o => new SelectListItem() { Value = o.Id.ToString(), Text = o.Title })
+                .ToList();
             return View(model);
         }
 
