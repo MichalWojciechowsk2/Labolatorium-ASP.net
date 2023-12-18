@@ -1,4 +1,5 @@
 ﻿using Labolatorium3.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using ModelsLibrary;
@@ -7,6 +8,7 @@ using System.Reflection;
 
 namespace Labolatorium3.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class LibraryController : Controller
     {
         private readonly IBookService _bookService;
@@ -14,6 +16,7 @@ namespace Labolatorium3.Controllers
         {
             _bookService = bookService;
         }
+        [AllowAnonymous]
         public IActionResult Index()
         {
             return View(_bookService.FindAll());

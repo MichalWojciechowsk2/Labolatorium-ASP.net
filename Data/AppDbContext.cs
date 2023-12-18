@@ -1,5 +1,6 @@
 ﻿
 using Data.Entities;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using ModelsLibrary;
 
@@ -21,6 +22,56 @@ namespace Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            //USER ADMIN 
+            base.OnModelCreating(modelBuilder);
+
+            string ADMIN_ID = Guid.NewGuid().ToString();
+            string ROLE_ID = Guid.NewGuid().ToString();
+
+            // dodanie roli administratora
+            modelBuilder.Entity<IdentityRole>().HasData(new IdentityRole
+            {
+                Name = "admin",
+                NormalizedName = "ADMIN",
+                Id = ROLE_ID,
+                ConcurrencyStamp = ROLE_ID
+            });
+
+            // utworzenie administratora jako użytkownika
+            var admin = new IdentityUser
+            {
+                Id = ADMIN_ID,
+                Email = "adam@wsei.edu.pl",
+                EmailConfirmed = true,
+                UserName = "adam",
+                NormalizedUserName = "ADMIN"
+            };
+
+            // haszowanie hasła
+            PasswordHasher<IdentityUser> ph = new PasswordHasher<IdentityUser>();
+            admin.PasswordHash = ph.HashPassword(admin, "1234abcd!@#$ABCD");
+
+            // zapisanie użytkownika
+            modelBuilder.Entity<IdentityUser>().HasData(admin);
+
+            modelBuilder.Entity<IdentityUserRole<string>>().HasKey(ur => new { ur.UserId, ur.RoleId });
+
+            // przypisanie roli administratora użytkownikowi
+            modelBuilder.Entity<IdentityUserRole<string>>()
+            .HasData(new IdentityUserRole<string>
+            {
+                RoleId = ROLE_ID,
+                UserId = ADMIN_ID
+            });
+
+
+
+
+
+
+
+            ////////////////////////////////////////////////////////////////
+
             modelBuilder.Entity<OrganizationEntity>()
             .OwnsOne(e => e.Address);
 

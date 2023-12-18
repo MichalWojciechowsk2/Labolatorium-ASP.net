@@ -1,5 +1,8 @@
 using Labolatorium3.Models;
 using System.Xml.Linq;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Data;
 
 namespace Labolatorium3
 {
@@ -8,7 +11,9 @@ namespace Labolatorium3
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            var connectionString = builder.Configuration.GetConnectionString("AppDbContextConnection") ?? throw new InvalidOperationException("Connection string 'AppDbContextConnection' not found.");
 
+            builder.Services.AddRazorPages();
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
@@ -18,7 +23,19 @@ namespace Labolatorium3
 
             builder.Services.AddDbContext<Data.AppDbContext>();
 
+            //builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<AppDbContext>();
+
+            builder.Services.AddDefaultIdentity<IdentityUser>()       
+               .AddRoles<IdentityRole>()                              
+               .AddEntityFrameworkStores<Data.AppDbContext>();        
+
             builder.Services.AddTransient<IBookService, EFBookService>();
+
+            builder.Services.AddMemoryCache();
+            builder.Services.AddSession();
+
+
+
 
             var app = builder.Build();
 
@@ -34,6 +51,13 @@ namespace Labolatorium3
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseAuthentication();                                 
+            app.UseAuthorization();                                  
+            app.UseSession();                                        
+            app.MapRazorPages();                                     
+
+
 
             app.UseAuthorization();
 
