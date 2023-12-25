@@ -57,10 +57,6 @@ namespace Labolatorium3
             app.UseSession();                                        
             app.MapRazorPages();                                     
 
-
-
-            app.UseAuthorization();
-
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");

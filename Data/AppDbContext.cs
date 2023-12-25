@@ -66,8 +66,40 @@ namespace Data
 
 
 
+            ////////////////////////////////////////////////////////////////
+            string USER_ROLE_ID = Guid.NewGuid().ToString();
 
+            modelBuilder.Entity<IdentityRole>().HasData(new IdentityRole
+            {
+                Name = "user",
+                NormalizedName = "USER",
+                Id = USER_ROLE_ID,
+                ConcurrencyStamp = USER_ROLE_ID
+            });
 
+            // Utworzenie użytkownika jako USER
+            var user = new IdentityUser
+            {
+                Id = Guid.NewGuid().ToString(),
+                Email = "jan@wsei.edu.pl",
+                EmailConfirmed = true,
+                UserName = "jan",
+                NormalizedUserName = "JAN"
+            };
+
+            // Haszowanie hasła dla użytkownika
+            PasswordHasher<IdentityUser> userPasswordHasher = new PasswordHasher<IdentityUser>();
+            user.PasswordHash = userPasswordHasher.HashPassword(user, "userpassword123!@#");
+
+            // Zapisanie użytkownika
+            modelBuilder.Entity<IdentityUser>().HasData(user);
+
+            // Przypisanie roli USER użytkownikowi
+            modelBuilder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string>
+            {
+                RoleId = USER_ROLE_ID,
+                UserId = user.Id
+            });
 
 
             ////////////////////////////////////////////////////////////////
