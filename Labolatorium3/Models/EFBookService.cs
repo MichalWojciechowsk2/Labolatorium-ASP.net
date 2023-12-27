@@ -50,5 +50,21 @@ namespace Labolatorium3.Models
         {
             return BookMapper.FromEntity(_context.Books.Find(id));
         }
+
+        public PagingList<Book> FindPage(int page, int size)
+        {
+            return PagingList<Book>.Create(
+               (p, s) => _context.Books
+               .OrderBy(c => c.Title)
+               .Skip((p - 1) * s)
+                .Take(s)
+               .Select(BookMapper.FromEntity)
+               .ToList()
+               ,
+               page,
+               size,
+               _context.Books.Count()
+               );
+        }
     }
 }

@@ -11,5 +11,6 @@ namespace Labolatorium3.Models
         List<Book> FindAll();
         Book? FindById(int id);
         List<OrganizationEntity> FindAllOrganizationsForVieModel();
+        PagingList<Book> FindPage(int page, int size);
     }
 }

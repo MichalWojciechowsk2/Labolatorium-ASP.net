@@ -53,5 +53,10 @@ namespace Labolatorium3.Models
         })
         .ToList();
         }
+
+        public PagingList<Book> FindPage(int page, int size)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

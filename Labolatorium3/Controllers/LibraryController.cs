@@ -1,10 +1,13 @@
 ﻿using Labolatorium3.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using ModelsLibrary;
 using System.Diagnostics;
+using System.Drawing;
 using System.Reflection;
 
 namespace Labolatorium3.Controllers
@@ -127,5 +130,14 @@ namespace Labolatorium3.Controllers
         {
             return RedirectToAction("Index");
         }
+        public IActionResult PagedIndex([FromQuery] int page = 1, [FromQuery] int size = 5)
+        {
+            if (size < 1)
+            {
+                return BadRequest();
+            }
+            return View(_bookService.FindPage(page, size));
+        }
+
     }
 }
