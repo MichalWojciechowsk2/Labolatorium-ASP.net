@@ -42,7 +42,7 @@
     </div>
     <div class="mb-3">
         <label>Organization filter</label>
-        <input type="text" id="filter" />
+        <input type="text" name="filter" id="filter" />
         <select class="form-control" id="OrganizationId"></select>
     </div>
     <div class="mb3">
@@ -52,31 +52,39 @@
 
 @section Scripts {
     <script>
-        let select = document.getElementById("OrganizationId");
-        let filter = document.getElementById("filter");
-        filter.onchange = function (e) {
-            if (filter.value.lenght == 0) {
-                return;
-            }
-            fetch(`/api/contacts?filter=${filter.value}`)
-                .then(response => {
-                    if (response.ok) {
-                        return response.json()
-                    }
-                    throw "no ok, status " + response.status;
-                })
-                .then(json => {
-                    select.innerHTML = '';
-                    for (let item of json) {
-                        let option = document.createElement('option');
-                        option.setAttribute('value', item.id);
-                        option.innerText = item.title;
-                        select.appendChild(option);
-                    }
-                })
-                .catch(e => {
-                    console.log('cant get data from api', e);
-                });
-        };
+        document.addEventListener("DOMContentLoaded", function () {
+            let select = document.getElementById("OrganizationId");
+            let filter = document.getElementById("filter");
+
+            filter.addEventListener("input", function () {
+                let inputValue = filter.value.trim();
+
+                if (inputValue.length === 0) {
+                    return;
+                }
+
+                fetch(`/api/organizations?filter=${inputValue}`)
+                    .then(response => {
+                        if (response.ok) {
+                            return response.json();
+                        }
+                        throw new Error("Failed to fetch organizations");
+                    })
+                    .then(json => {
+                        console.log('Received JSON data:', json);
+
+                        select.innerHTML = '';
+                        for (let organization of json) {
+                            let option = document.createElement('option');
+                            option.value = organization.id;
+                            option.text = organization.title;
+                            select.add(option);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error fetching organizations:', error.message);
+                    });
+            });
+        });
     </script>
 }

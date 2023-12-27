@@ -1,5 +1,7 @@
 ﻿using Data;
 using Microsoft.AspNetCore.Mvc;
+using ModelsLibrary;
+using Labolatorium3.Models;
 
 namespace Labolatorium3.Controllers
 {
@@ -22,18 +24,18 @@ namespace Labolatorium3.Controllers
                 .ToList());
         }
 
-        [Route("{id}")]
-        public IActionResult GetById(int id)
-        {
-            var organization = _context.Organizations.Find(id);
-            if (organization == null)
-            {
-                return NotFound();
-            }
-            else
-            {
-                return Ok(organization);
-            }
-        }
+        //[Route("{id}")]
+        //public IActionResult GetById(int id)
+        //{
+        //    var organization = _context.Organizations.Find(id);
+        //    if (organization == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    else
+        //    {
+        //        return Ok(organization);
+        //    }
+        //}
     }
 }
