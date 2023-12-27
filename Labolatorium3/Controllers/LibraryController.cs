@@ -2,13 +2,14 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore.Metadata;
 using ModelsLibrary;
 using System.Diagnostics;
 using System.Reflection;
 
 namespace Labolatorium3.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public class LibraryController : Controller
     {
         private readonly IBookService _bookService;
@@ -48,6 +49,25 @@ namespace Labolatorium3.Controllers
             {
                 return View(model);
             }
+        }
+
+
+        [HttpGet]
+        public IActionResult CreateApi()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateApi(Book c)
+        {
+            if (ModelState.IsValid)
+            {
+                _bookService.Add(c);
+                return RedirectToAction(nameof(Index));
+            }
+            return View();
         }
 
         [HttpGet]
