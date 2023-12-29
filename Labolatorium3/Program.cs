@@ -3,6 +3,7 @@ using System.Xml.Linq;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Data;
+using ModelsLibrary;
 
 namespace Labolatorium3
 {
@@ -51,7 +52,7 @@ namespace Labolatorium3
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseMiddleware<LastVisitCookie>();
             app.UseAuthentication();                                 
             app.UseAuthorization();                                  
             app.UseSession();                                        
