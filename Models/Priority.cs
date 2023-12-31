@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ModelsLibrary
 {
-    public enum Priority
+    public enum Priority : byte
     {
         [Display(Name = "Low")] Low = 1,
         [Display(Name = "Normal")] Normal = 2,

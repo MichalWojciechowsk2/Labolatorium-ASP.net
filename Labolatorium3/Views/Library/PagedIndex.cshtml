@@ -1,11 +1,13 @@
 ﻿@using ModelsLibrary;
 @model PagingList<Book> 
 
-
     <h1>List of books</h1>
 
     <a class="btn btn-primary" asp-controller="Library" asp-action="AddBook">Add book</a>
     <a asp-controller="Library" asp-action="CreateApi">Add book (API version)</a>
+
+<hr class="my-4">
+
 
 @if (Model.Data.Count() > 0)
 {

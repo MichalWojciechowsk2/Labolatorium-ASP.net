@@ -9,7 +9,7 @@ namespace ModelsLibrary
     {
         //[HiddenInput]
         public int Id { get; set; }
-        //[Display(Name = "Priority")]
+        [Display(Name = "Priority")]
         public Priority Priority { get; set; }
 
         [Required(ErrorMessage = "enter the book title")]

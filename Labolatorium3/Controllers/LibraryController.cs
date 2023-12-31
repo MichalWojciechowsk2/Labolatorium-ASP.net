@@ -46,7 +46,7 @@ namespace Labolatorium3.Controllers
             .ToList();
 
                 _bookService.Add(model);
-                return RedirectToAction("Index");
+                return RedirectToAction("PagedIndex");
             }
             else
             {
@@ -89,7 +89,7 @@ namespace Labolatorium3.Controllers
             if (ModelState.IsValid)
             {
                 _bookService.Edit(model);
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(PagedIndex));
 
             }
             return View(model);
@@ -110,7 +110,7 @@ namespace Labolatorium3.Controllers
         public IActionResult Delete(Book model)
         {
             _bookService.Delete(model.Id);
-            return RedirectToAction("Index");
+            return RedirectToAction("PagedIndex");
         }
 
 
@@ -130,6 +130,7 @@ namespace Labolatorium3.Controllers
         {
             return RedirectToAction("Index");
         }
+        [AllowAnonymous]
         public IActionResult PagedIndex([FromQuery] int page = 1, [FromQuery] int size = 5)
         {
             if (size < 1)

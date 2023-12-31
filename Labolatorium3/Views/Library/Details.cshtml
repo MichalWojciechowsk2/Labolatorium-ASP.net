@@ -7,7 +7,7 @@
 <p>Author:</p>
 <h3>@Model.Author</h3>
 <p>Priority:</p>
-<h3>@Model.Priority</h3>
+<h3>@Html.DisplayFor(model => model.Priority)</h3>
 <p>Number Of Pages:</p>
 <h3>@Model.NumberOfPages</h3>
 <p>ISBN:</p>
@@ -18,7 +18,7 @@
 <h3>@Model.PublishingHouse</h3>
 <form asp-action="Details">
 @*     <input asp-for="Id" /> *@
-    <a class="btn btn-primary" type="submit" asp-action="Index">Back</a>
+    <a class="btn btn-primary" type="submit" asp-action="PagedIndex">Back</a>
 </form>
 @* <div class="mb-3">
     <a class="btn btn-primary" asp-area="" asp-controller="Library" asp-action="Index">Back</a>

@@ -1,3 +1,5 @@
+
+
 html {
   font-size: 14px;
 }
@@ -19,4 +21,98 @@ html {
 
 body {
   margin-bottom: 60px;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header styles */
+header {
+    background-color: #3498db;
+    color: #ecf0f1;
+    padding: 10px;
+    text-align: center;
+}
+
+/* Section styles */
+section {
+    margin: 20px;
+}
+
+/* Table styles */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+    .table th, .table td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .table th {
+        background-color: #2980b9;
+        color: #ecf0f1;
+    }
+
+/* Pagination styles */
+.pagination {
+    display: flex;
+    list-style: none;
+}
+
+.page-item {
+    margin-right: 5px;
+}
+
+.page-link {
+    padding: 10px;
+    color: #333;
+    text-decoration: none;
+    background-color: #ecf0f1;
+    border: 1px solid #ddd;
+    cursor: pointer;
+}
+
+.page-item.disabled .page-link {
+    color: #888;
+    cursor: not-allowed;
+}
+
+/* Button group styles */
+.btn-group {
+    display: flex;
+}
+
+/* Primary button style */
+.btn-primary {
+    background-color: #3498db;
+    color: #ecf0f1;
+    border: 1px solid #3498db;
+}
+
+/* Secondary button style */
+.btn-secondary {
+    background-color: #2ecc71;
+    color: #ecf0f1;
+    border: 1px solid #2ecc71;
+}
+
+/* Outline button style */
+.btn-outline {
+    background-color: transparent;
+    color: #3498db;
+    border: 1px solid #3498db;
+}
+
+/* Danger button style */
+.btn-danger {
+    background-color: #e74c3c;
+    color: #ecf0f1;
+    border: 1px solid #e74c3c;
 }
